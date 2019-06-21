@@ -1,11 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>org.springframework.security.oauth</groupId>
 		<artifactId>spring-security-oauth-parent</artifactId>
-		<version>2.3.7.BUILD-SNAPSHOT</version>
+		<version>2.3.6.RELEASE</version>
 		<relativePath>../../..</relativePath>
 	</parent>
 
@@ -73,6 +75,16 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<url>${tomcat.deploy.url}</url>
+					<server>${tomcat.principal}</server>
+					<path>/${pom.artifactId}</path>
+				</configuration>
+			</plugin>
 			<plugin>
 				<!--skip deploy (this is just a test module) -->
 				<artifactId>maven-deploy-plugin</artifactId>
